@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
-use Faker\Provider\Text;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\PostCategory;
 
@@ -15,6 +15,7 @@ use MoonShine\UI\Fields\Date;
 use MoonShine\UI\Fields\ID;
 use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\UI\Fields\Text;
 
 /**
  * @extends ModelResource<PostCategory>
@@ -32,8 +33,8 @@ class PostCategoryResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
-            \MoonShine\UI\Fields\Text::make('Title','name')->sortable(),
-            Date::make('Created At','created_at')->sortable(),
+            Text::make('Title', 'name'),
+            Date::make('Created At', 'created_at')->sortable(),
         ];
     }
 
@@ -45,7 +46,7 @@ class PostCategoryResource extends ModelResource
         return [
             Box::make([
                 ID::make(),
-                \MoonShine\UI\Fields\Text::make('Title','name'),
+                Text::make('Title', 'name')
             ])
         ];
     }
@@ -57,9 +58,10 @@ class PostCategoryResource extends ModelResource
     {
         return [
             ID::make(),
-            \MoonShine\UI\Fields\Text::make('Title','name'),
-            Date::make('Created At','created_at'),
-            HasMany::make('Posts','posts',PostCategory::class)
+            Text::make('Title', 'name'),
+            Date::make('Created At', 'created_at'),
+            HasMany::make('posts', 'posts', fn($item)=>"$item->id. $item->name",
+                PostResource::class),
         ];
     }
 

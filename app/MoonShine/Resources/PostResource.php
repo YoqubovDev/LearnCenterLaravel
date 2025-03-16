@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
+use App\Models\PostCategory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Post;
 
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\Date;
@@ -35,7 +37,14 @@ class PostResource extends ModelResource
             Text::make('Title')->sortable(),
             Text::make('Content'),
             Image::make('Image'),
-            Date::make('Published At','updated_at')->sortable(),
+            BelongsTo::make('Category',
+                'postCategory',
+                fn($item)=>"$item->id. $item->name",
+                PostCategoryResource::class)
+                ->afterFill(
+                    fn($field) => $field->setColumn('category_id')
+                ),
+            Date::make('Published At','updated_at')->sortable()
         ];
     }
 
@@ -47,11 +56,17 @@ class PostResource extends ModelResource
         return [
             Box::make([
                 ID::make(),
-                \MoonShine\UI\Fields\Text::make('Title','title'),
+                Text::make('Title', 'title'),
                 Text::make('Content'),
-                Image::make('Image'),
-                Date::make('Published At','updated_at')->sortable(),
-
+                Image::make('Image', 'image'),
+                BelongsTo::make(
+                    'Category',
+                    'postCategory',
+                    fn($item)=>"$item->id. $item->name",
+                    PostCategoryResource::class)
+                    ->afterFill(
+                        fn($field) => $field->setColumn('category_id')
+                    ),
             ])
         ];
     }
@@ -62,11 +77,11 @@ class PostResource extends ModelResource
     protected function detailFields(): iterable
     {
         return [
-        ID::make(),
+            ID::make(),
             Text::make('Title'),
             Text::make('Content'),
             Image::make('Image'),
-            \MoonShine\Laravel\Fields\Relationships\BelongsTo::make('Category',
+            BelongsTo::make('Category',
                 'postCategory',
                 fn($item)=>"$item->id. $item->name",
                 PostCategoryResource::class)
@@ -84,6 +99,11 @@ class PostResource extends ModelResource
      */
     protected function rules(mixed $item): array
     {
-        return [];
+        return [
+            'title' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string'],
+            'image' => ['nullable', 'image'],
+            'category_id' => ['required', 'exists:post_categories,id']
+        ];
     }
 }

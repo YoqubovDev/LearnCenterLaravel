@@ -47,7 +47,7 @@ final class MoonShineLayout extends AppLayout
     {
         return [
             ...parent::menu(),
-            MenuItem::make('PostCategories', PostCategoryResource::class),
+            MenuItem::make('Post Categories', PostCategoryResource::class),
             MenuItem::make('Posts', PostResource::class),
         ];
     }
