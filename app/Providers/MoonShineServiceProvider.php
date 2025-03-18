@@ -14,6 +14,9 @@ use App\MoonShine\Resources\MoonShineUserRoleResource;
 use App\MoonShine\Resources\PostCategoryResource;
 use App\MoonShine\Resources\PostResource;
 use App\MoonShine\Resources\AddUserRegisterResource;
+use App\MoonShine\Resources\LoginUserResource;
+use App\MoonShine\Resources\PaymentResource;
+use App\MoonShine\Resources\HomeworkResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -33,6 +36,8 @@ class MoonShineServiceProvider extends ServiceProvider
                 PostCategoryResource::class,
                 PostResource::class,
                 AddUserRegisterResource::class,
+                PaymentResource::class,
+                HomeworkResource::class,
             ])
             ->pages([
                 ...$config->getPages(),

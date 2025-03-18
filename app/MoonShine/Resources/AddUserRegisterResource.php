@@ -12,6 +12,9 @@ use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\ID;
 use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\UI\Fields\Password;
+use MoonShine\UI\Fields\PasswordRepeat;
+use MoonShine\UI\Fields\Phone;
 use MoonShine\UI\Fields\Text;
 
 /**
@@ -32,7 +35,8 @@ class AddUserRegisterResource extends ModelResource
             ID::make()->sortable(),
             Text::make('First Name'),
             Text::make('Last Name')->nullable(),
-            Text::make('Phone Number'),
+            Phone::make('Student Phone Number'),
+            Phone::make('Phone Number 2 ( parents for)')->nullable(),
             Text::make('Password'),
             Text::make('Address')->nullable(),
         ];
@@ -48,8 +52,10 @@ class AddUserRegisterResource extends ModelResource
                 ID::make(),
                 Text::make('First Name'),
                 Text::make('Last Name')->nullable(),
-                Text::make('Phone Number'),
+                Phone::make('Student Phone Number'),
+                Phone::make('Phone Number 2 ( parents for)')->nullable(),
                 Text::make('Password'),
+                PasswordRepeat::make('Password repeat', 'password_repeat'),
                 Text::make('Address')->nullable(),
 
             ])
@@ -65,7 +71,8 @@ class AddUserRegisterResource extends ModelResource
             ID::make(),
             Text::make('First Name'),
             Text::make('Last Name')->nullable(),
-            Text::make('Phone Number'),
+            Phone::make('Student Phone Number'),
+            Phone::make('Phone Number 2 (parents for)')->nullable(),
             Text::make('Password'),
             Text::make('Address')->nullable(),
 
