@@ -17,6 +17,9 @@ use App\MoonShine\Resources\AddUserRegisterResource;
 use App\MoonShine\Resources\LoginUserResource;
 use App\MoonShine\Resources\PaymentResource;
 use App\MoonShine\Resources\HomeworkResource;
+use App\MoonShine\Resources\CategoryResource;
+use App\MoonShine\Resources\ProductVolumesResource;
+use App\MoonShine\Resources\ProductsResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -38,6 +41,9 @@ class MoonShineServiceProvider extends ServiceProvider
                 AddUserRegisterResource::class,
                 PaymentResource::class,
                 HomeworkResource::class,
+                CategoryResource::class,
+                ProductVolumesResource::class,
+                ProductsResource::class,
             ])
             ->pages([
                 ...$config->getPages(),

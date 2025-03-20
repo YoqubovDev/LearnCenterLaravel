@@ -461,9 +461,6 @@
                                 <label for="email" class="inline-block font-Poppins text-[15px] font-normal text-[#686e7d] leading-[26px] tracking-[0.02rem]">Password*</label>
                                 <input type="password" id="password" name="password" placeholder="Enter Your Password" class="w-full p-[10px] text-[14px] font-normal text-[#686e7d] border-[1px] border-solid border-[#eee] outline-[0] leading-[26px] rounded-[10px]">
                             </div>
-                            <div class="bb-login-wrap mb-[24px]">
-                                <a href="javascript:void(0)" class="font-Poppins leading-[28px] tracking-[0.03rem] text-[14px] font-medium text-[#777]">Forgot Password?</a>
-                            </div>
                             <div class="bb-login-button m-[-5px] flex justify-between">
                                 <button class="bb-btn-2 transition-all duration-[0.3s] ease-in-out font-Poppins leading-[28px] tracking-[0.03rem] m-[5px] py-[4px] px-[20px] text-[14px] font-normal text-[#fff] bg-[#6c7fd8] rounded-[10px] border-[1px] border-solid border-[#6c7fd8] hover:bg-transparent hover:border-[#3d4750] hover:text-[#3d4750]" type="submit">Login</button>
                                 <a href="connect.html" class="h-[36px] m-[5px] flex items-center font-Poppins text-[15px] text-[#686e7d] font-light leading-[28px] tracking-[0.03rem]">Connect Admin</a>

@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('homework', function (Blueprint $table) {
+        Schema::create('product_volumes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->date('due_date');
-            $table->foreignId('subject_id')->constrained();
-            $table->foreignId('teacher_id')->constrained();
             $table->timestamps();
         });
     }
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('homework');
+        Schema::dropIfExists('product_volumes');
     }
 };
