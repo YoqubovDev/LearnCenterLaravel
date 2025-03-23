@@ -33,13 +33,12 @@ use MoonShine\UI\Components\{Breadcrumbs,
 use App\MoonShine\Resources\PostCategoryResource;
 use MoonShine\MenuManager\MenuItem;
 use App\MoonShine\Resources\PostResource;
-use App\MoonShine\Resources\AddUserRegisterResource;
-use App\MoonShine\Resources\LoginUserResource;
 use App\MoonShine\Resources\PaymentResource;
 use App\MoonShine\Resources\HomeworkResource;
 use App\MoonShine\Resources\CategoryResource;
 use App\MoonShine\Resources\ProductVolumesResource;
 use App\MoonShine\Resources\ProductsResource;
+use App\MoonShine\Resources\UserResource;
 
 final class MoonShineLayout extends AppLayout
 {
@@ -56,8 +55,8 @@ final class MoonShineLayout extends AppLayout
             ...parent::menu(),
             MenuItem::make('Post Categories', PostCategoryResource::class),
             MenuItem::make('Posts', PostResource::class),
+            MenuItem::make('Users', UserResource::class),
             MenuItem::make('Categories', CategoryResource::class),
-            MenuItem::make('Register Student Or Teacher', AddUserRegisterResource::class),
             MenuItem::make('Payments', PaymentResource::class),
             MenuItem::make('Homework', HomeworkResource::class),
             MenuItem::make('ProductVolumes', ProductVolumesResource::class),

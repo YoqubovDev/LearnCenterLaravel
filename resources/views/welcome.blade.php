@@ -11,16 +11,16 @@
     <div class="bb-social-follow absolute left-[20px] bottom-[30px] max-[1250px]:hidden">
         <ul class="inner-links">
             <li class="p-[6px] rotate-[270deg]">
-                <a href="javascript:void(0)" class="transition-all duration-[0.3s] ease-in-out font-Poppins text-[16px] font-medium text-[#777] hover:text-[#6c7fd8] leading-[28px] tracking-[0.03rem] uppercase">Fb</a>
+                <a href="javascript:void(0)" class="transition-all duration-[0.3s] ease-in-out font-Poppins text-[16px] font-medium text-[#777] hover:text-[#6c7fd8] leading-[28px] tracking-[0.03rem] uppercase">T</a>
             </li>
             <li class="p-[6px] rotate-[270deg]">
-                <a href="javascript:void(0)" class="transition-all duration-[0.3s] ease-in-out font-Poppins text-[16px] font-medium text-[#777] hover:text-[#6c7fd8] leading-[28px] tracking-[0.03rem] uppercase">Li</a>
+                <a href="javascript:void(0)" class="transition-all duration-[0.3s] ease-in-out font-Poppins text-[16px] font-medium text-[#777] hover:text-[#6c7fd8] leading-[28px] tracking-[0.03rem] uppercase">E</a>
             </li>
             <li class="p-[6px] rotate-[270deg]">
-                <a href="javascript:void(0)" class="transition-all duration-[0.3s] ease-in-out font-Poppins text-[16px] font-medium text-[#777] hover:text-[#6c7fd8] leading-[28px] tracking-[0.03rem] uppercase">Dr</a>
+                <a href="javascript:void(0)" class="transition-all duration-[0.3s] ease-in-out font-Poppins text-[16px] font-medium text-[#777] hover:text-[#6c7fd8] leading-[28px] tracking-[0.03rem] uppercase">A</a>
             </li>
             <li class="p-[6px] rotate-[270deg]">
-                <a href="javascript:void(0)" class="transition-all duration-[0.3s] ease-in-out font-Poppins text-[16px] font-medium text-[#777] hover:text-[#6c7fd8] leading-[28px] tracking-[0.03rem] uppercase">In</a>
+                <a href="javascript:void(0)" class="transition-all duration-[0.3s] ease-in-out font-Poppins text-[16px] font-medium text-[#777] hover:text-[#6c7fd8] leading-[28px] tracking-[0.03rem] uppercase">CH</a>
             </li>
         </ul>
     </div>

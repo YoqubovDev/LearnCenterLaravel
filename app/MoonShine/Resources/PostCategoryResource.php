@@ -16,6 +16,7 @@ use MoonShine\UI\Fields\ID;
 use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\UI\Fields\Text;
+use MoonShine\UI\Fields\Textarea;
 
 /**
  * @extends ModelResource<PostCategory>
@@ -46,7 +47,9 @@ class PostCategoryResource extends ModelResource
         return [
             Box::make([
                 ID::make(),
-                Text::make('Title', 'name')
+                Text::make('Title', 'name'),
+                Text::make('Slug', 'slug'),
+                Textarea::make('Description', 'description')->nullable(),
             ])
         ];
     }

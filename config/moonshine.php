@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -62,7 +63,8 @@ return [
     'auth' => [
         'enabled' => true,
         'guard' => 'moonshine',
-        'model' => MoonshineUser::class,
+        'model' => User::class,
+//        'model' => MoonshineUser::class,
         'middleware' => Authenticate::class,
         'pipelines' => [],
     ],

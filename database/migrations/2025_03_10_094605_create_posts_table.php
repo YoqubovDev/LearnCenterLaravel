@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('content');
             $table->string('image');
             $table->foreignId('category_id')->constrained('post_categories');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

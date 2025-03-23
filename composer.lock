@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6f963d2b0b938a4cdcabe5a40bdd4e0",
+    "content-hash": "bfa9b730fb4d14d9460d889ddc7a3a44",
     "packages": [
         {
             "name": "brick/math",
@@ -2314,6 +2314,70 @@
             "time": "2025-03-06T07:09:10+00:00"
         },
         {
+            "name": "moonshine/tinymce",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moonshine-software/tinymce.git",
+                "reference": "e7f23d52976a65f23941ac3a62ddc34636a73eac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moonshine-software/tinymce/zipball/e7f23d52976a65f23941ac3a62ddc34636a73eac",
+                "reference": "e7f23d52976a65f23941ac3a62ddc34636a73eac",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": "^8.2|^8.3"
+            },
+            "conflict": {
+                "moonshine/moonshine": "<3.0.0"
+            },
+            "require-dev": {
+                "moonshine/moonshine": "^3.0",
+                "orchestra/testbench": "^9.0",
+                "phpunit/phpunit": "^11.0.1",
+                "rector/rector": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MoonShine\\TinyMce\\Providers\\TinyMceServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MoonShine\\TinyMce\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Danil Shutsky",
+                    "email": "info@cutcode.ru",
+                    "homepage": "https://cutcode.dev"
+                }
+            ],
+            "description": "TinyMce editor for MoonShine",
+            "homepage": "https://moonshine-laravel.com",
+            "keywords": [
+                "moonshine",
+                "tinymce"
+            ],
+            "support": {
+                "issues": "https://github.com/moonshine-software/tinymce/issues",
+                "source": "https://github.com/moonshine-software/tinymce"
+            },
+            "time": "2025-01-14T09:00:43+00:00"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "3.8.6",
             "source": {
@@ -3567,6 +3631,159 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "spatie/laravel-permission",
+            "version": "6.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-permission.git",
+                "reference": "4fa03c06509e037a4d42c131d0f181e3e4bbd483"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/4fa03c06509e037a4d42c131d0f181e3e4bbd483",
+                "reference": "4fa03c06509e037a4d42c131d0f181e3e4bbd483",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^8.12|^9.0|^10.0|^11.0|^12.0",
+                "illuminate/container": "^8.12|^9.0|^10.0|^11.0|^12.0",
+                "illuminate/contracts": "^8.12|^9.0|^10.0|^11.0|^12.0",
+                "illuminate/database": "^8.12|^9.0|^10.0|^11.0|^12.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "laravel/passport": "^11.0|^12.0",
+                "laravel/pint": "^1.0",
+                "orchestra/testbench": "^6.23|^7.0|^8.0|^9.0|^10.0",
+                "phpunit/phpunit": "^9.4|^10.1|^11.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Permission\\PermissionServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-main": "6.x-dev",
+                    "dev-master": "6.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Spatie\\Permission\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Permission handling for Laravel 8.0 and up",
+            "homepage": "https://github.com/spatie/laravel-permission",
+            "keywords": [
+                "acl",
+                "laravel",
+                "permission",
+                "permissions",
+                "rbac",
+                "roles",
+                "security",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-permission/issues",
+                "source": "https://github.com/spatie/laravel-permission/tree/6.16.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-28T20:29:57+00:00"
+        },
+        {
+            "name": "sweet1s/moonshine-roles-permissions",
+            "version": "3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SWEET1S/moonshine-roles-permissions.git",
+                "reference": "7a946da4116aed7996bed77673290649e30b9d50"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SWEET1S/moonshine-roles-permissions/zipball/7a946da4116aed7996bed77673290649e30b9d50",
+                "reference": "7a946da4116aed7996bed77673290649e30b9d50",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "lee-to/laravel-package-command": "^0.9.1",
+                "php": "^8.2|^8.3|^8.4",
+                "spatie/laravel-permission": "^6.2"
+            },
+            "conflict": {
+                "moonshine/moonshine": "<3.0"
+            },
+            "require-dev": {
+                "brianium/paratest": "^6.8",
+                "mockery/mockery": "^1.4.4",
+                "moonshine/moonshine": "^3.0",
+                "orchestra/testbench": "^4.0|^5.0|^6.0|^7.0|^8.0",
+                "phpstan/phpstan": "^1.4.7",
+                "phpunit/phpunit": "^9.5.8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Sweet1s\\MoonshineRBAC\\Providers\\MoonShineRBACServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sweet1s\\MoonshineRBAC\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrei Balan",
+                    "email": "abalan1510it@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Moonshine Role and Permission management",
+            "homepage": "https://moonshine-laravel.com/",
+            "keywords": [
+                "laravel",
+                "moonshine",
+                "permissions",
+                "roles"
+            ],
+            "support": {
+                "issues": "https://github.com/sweet1s/moonshine-roles-permissions/issues",
+                "source": "https://github.com/sweet1s/moonshine-roles-permissions"
+            },
+            "time": "2025-03-06T07:05:12+00:00"
         },
         {
             "name": "symfony/clock",
