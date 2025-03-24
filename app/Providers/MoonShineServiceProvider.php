@@ -19,6 +19,10 @@ use App\MoonShine\Resources\HomeworkResource;
 use App\MoonShine\Resources\CategoryResource;
 use App\MoonShine\Resources\ProductVolumesResource;
 use App\MoonShine\Resources\ProductsResource;
+use App\MoonShine\Resources\UserResultResource;
+use App\MoonShine\Resources\LessonResource;
+use App\MoonShine\Resources\VideUpLoadResource;
+use App\MoonShine\Resources\ImageResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -43,6 +47,10 @@ class MoonShineServiceProvider extends ServiceProvider
                 CategoryResource::class,
                 ProductVolumesResource::class,
                 ProductsResource::class,
+                UserResultResource::class,
+                LessonResource::class,
+                VideUpLoadResource::class,
+                ImageResource::class,
             ])
             ->pages([
                 ...$config->getPages(),
