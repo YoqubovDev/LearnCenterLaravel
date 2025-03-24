@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Sweet1s\MoonshineRBAC\Traits\MoonshineRBACHasRoles;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
     use HasRoles;
+    use MoonshineRBACHasRoles;
+
+    const SUPER_ADMIN_ROLE_ID = 1;
 
     /**
      * The attributes that are mass assignable.
@@ -20,9 +25,14 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'first_name',
+        'last_name',
+        'student_phone_number',
         'password',
+        'address',
+        'role',
+        'status',
+        'studying',
     ];
 
     /**

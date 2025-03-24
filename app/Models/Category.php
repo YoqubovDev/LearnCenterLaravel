@@ -14,19 +14,24 @@ class Category extends Model
 
         return $this->belongsTo(Category::class,'parent_id');
     }
-
-    public function product()
+    public function categories()
     {
-        return $this->hasMany(Product::class, 'id');
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, 'id');
     }
 
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
     }
-
-    public function productCount()
-    {
-        return $this->hasMany(Product::class, 'category_id')->count();
-    }
+//
+//    public function productCount()
+//    {
+//        return $this->hasMany(Product::class, 'category_id')->count();
+//    }
 }
