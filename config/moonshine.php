@@ -63,15 +63,15 @@ return [
     'auth' => [
         'enabled' => true,
         'guard' => 'moonshine',
-        'model' => User::class,
-//        'model' => MoonshineUser::class,
+//        'model' => User::class,
+        'model' => MoonshineUser::class,
         'middleware' => Authenticate::class,
         'pipelines' => [],
     ],
 
     // Authentication and profile
     'user_fields' => [
-        'username' => 'email',
+        'role' => 'role',
         'password' => 'password',
         'name' => 'name',
         'avatar' => 'avatar',
