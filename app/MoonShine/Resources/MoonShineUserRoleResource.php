@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
+use App\MoonShine\Pages\Dashboard;
 use MoonShine\Laravel\Enums\Action;
 use MoonShine\Laravel\Models\MoonshineUserRole;
 use MoonShine\Laravel\Resources\ModelResource;
@@ -12,7 +13,9 @@ use MoonShine\MenuManager\Attributes\Order;
 use MoonShine\Support\Attributes\Icon;
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\Layout\Box;
+use MoonShine\UI\Fields\Date;
 use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Select;
 use MoonShine\UI\Fields\Text;
 
 #[Icon('bookmark')]
@@ -49,7 +52,11 @@ class MoonShineUserRoleResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
-            Text::make(__('moonshine::ui.resource.role_name'), 'name'),
+            Select::make(__('moonshine::ui.resource.role_name'), 'name')->options([
+                'admin' => __('admin'),
+                'teacher' => __('teacher'),
+            ]),
+            Date::make('Created At', 'created_at')->sortable(),
         ];
     }
 
@@ -63,7 +70,10 @@ class MoonShineUserRoleResource extends ModelResource
         return [
             Box::make([
                 ID::make()->sortable(),
-                Text::make(__('moonshine::ui.resource.role_name'), 'name')
+                Select::make(__('moonshine::ui.resource.role_name'), 'name')->options([
+                    'admin' => __('admin'),
+                    'teacher' => __('teacher'),
+                ])
                     ->required(),
             ]),
         ];

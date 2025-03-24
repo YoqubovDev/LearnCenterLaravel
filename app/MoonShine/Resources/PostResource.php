@@ -38,7 +38,7 @@ class PostResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Title', 'title')->reactive()-required(),
+            Text::make('Title', 'title')->reactive(),
             Slug::make('Slug', 'slug')->From('title')->live()->unique()->required(),
             Textarea::make('Content')->customAttributes([
                 'rows' => 6,
@@ -51,9 +51,9 @@ class PostResource extends ModelResource
                 ->afterFill(
                     fn($field) => $field->setColumn('category_id')
                 )->nullable(),
-            BelongsTo::make('User',
+            BelongsTo::make('Admin',
                 'postUser',
-                fn($item)=>"$item->id. $item->first_name $item->last_name",
+                fn($item)=>"$item->id. $item->name",
                 UserResource::class)
                 ->afterFill(
                     fn($field) => $field->setColumn('user_id')
@@ -82,9 +82,9 @@ class PostResource extends ModelResource
                     ->afterFill(
                         fn($field) => $field->setColumn('category_id')
                     )->nullable(),
-                BelongsTo::make('User',
+                BelongsTo::make('Admin',
                     'postUser',
-                    fn($item)=>"$item->id. $item->first_name $item->last_name",
+                    fn($item)=>"$item->id. $item->name",
                     UserResource::class)
                     ->afterFill(
                         fn($field) => $field->setColumn('user_id')
@@ -111,9 +111,9 @@ class PostResource extends ModelResource
                 ->afterFill(
                     fn($field) => $field->setColumn('category_id')
                 )->nullable(),
-            BelongsTo::make('User',
+            BelongsTo::make('Admin',
                 'postUser',
-                fn($item)=>"$item->id. $item->first_name $item->last_name",
+                fn($item)=>"$item->id. $item->name",
                 UserResource::class)
                 ->afterFill(
                     fn($field) => $field->setColumn('user_id')

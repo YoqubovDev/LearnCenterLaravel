@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
+use App\Models\Lesson;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 
@@ -32,9 +33,9 @@ class CategoryResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
-            Text::make('mame'),
+            Text::make('Name'),
             BelongsTo::make('parent','parent',fn($item)=>"$item->id . $item->name",CategoryResource::class)->nullable(),
-            HasMany::make('Images','images')
+//            HasMany::make('Images','images')
         ];
     }
 
@@ -46,9 +47,9 @@ class CategoryResource extends ModelResource
         return [
             Box::make([
                 ID::make(),
-                Text::make('mame'),
+                Text::make('Name'),
                 BelongsTo::make('parent','parent',fn($item)=>"$item->id . $item->name",CategoryResource::class)->nullable(),
-                HasMany::make('Images','images')
+//                HasMany::make('Images','images')
             ])
         ];
     }
@@ -60,11 +61,11 @@ class CategoryResource extends ModelResource
     {
         return [
             ID::make(),
-            Text::make('mame'),
+            Text::make('Name'),
             BelongsTo::make('parent','parent',fn($item)=>"$item->id . $item->name",CategoryResource::class)->nullable(),
-            HasMany::make('Products', 'products', fn($item)=>"$item->id. $item->name",
-                ProductResource::class),
-            HasMany::make('Images','images')
+            HasMany::make('Lessons', 'lessons', fn($item)=>"$item->id. $item->name",
+                LessonResource::class),
+//            HasMany::make('Images','images')
         ];
     }
 

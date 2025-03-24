@@ -27,14 +27,12 @@ use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Image;
 use MoonShine\UI\Fields\Password;
 use MoonShine\UI\Fields\PasswordRepeat;
+use MoonShine\UI\Fields\Select;
 use MoonShine\UI\Fields\Text;
 
 #[Icon('users')]
 #[Group('moonshine::ui.resource.system', 'users', translatable: true)]
 #[Order(1)]
-/**
- * @extends ModelResource<MoonshineUser>
- */
 class MoonShineUserResource extends ModelResource
 {
     protected string $model = MoonshineUser::class;
@@ -61,26 +59,22 @@ class MoonShineUserResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
-
             BelongsTo::make(
                 __('moonshine::ui.resource.role'),
                 'moonshineUserRole',
                 formatted: static fn (MoonshineUserRole $model) => $model->name,
                 resource: MoonShineUserRoleResource::class,
             )->badge(Color::PURPLE),
-
             Text::make(__('moonshine::ui.resource.name'), 'name'),
-
-            Image::make(__('moonshine::ui.resource.avatar'), 'avatar')->modifyRawValue(fn (
-                ?string $raw
-            ): string => $raw ?? ''),
-
+            Image::make(__('moonshine::ui.resource.avatar'), 'avatar')->modifyRawValue(fn (?string $raw): string => $raw ?? ''),
             Date::make(__('moonshine::ui.resource.created_at'), 'created_at')
                 ->format("d.m.Y")
                 ->sortable(),
-
-            Email::make(__('moonshine::ui.resource.email'), 'email')
-                ->sortable(),
+            Select::make('User Name', 'name')->options([
+                'Admin' => 'Admin',
+                'Teacher' => 'Teacher',
+                'Student' => 'Student',
+            ]),
         ];
     }
 
@@ -96,7 +90,6 @@ class MoonShineUserResource extends ModelResource
                 Tabs::make([
                     Tab::make(__('moonshine::ui.resource.main_information'), [
                         ID::make()->sortable(),
-
                         BelongsTo::make(
                             __('moonshine::ui.resource.role'),
                             'moonshineUserRole',
@@ -106,31 +99,26 @@ class MoonShineUserResource extends ModelResource
                             ->reactive()
                             ->creatable()
                             ->valuesQuery(static fn (Builder $q) => $q->select(['id', 'name'])),
-
                         Flex::make([
-                            Text::make(__('moonshine::ui.resource.name'), 'name')
-                                ->required(),
-
-                            Email::make(__('moonshine::ui.resource.email'), 'email')
-                                ->required(),
+                            Text::make(__('moonshine::ui.resource.name'), 'name')->required(),
+                            Select::make('User Name', 'name')->options([
+                                'Admin' => 'Admin',
+                                'Teacher' => 'Teacher',
+                            ])->default('Admin'),
                         ]),
-
                         Image::make(__('moonshine::ui.resource.avatar'), 'avatar')
                             ->disk(moonshineConfig()->getDisk())
                             ->dir('moonshine_users')
                             ->allowedExtensions(['jpg', 'png', 'jpeg', 'gif']),
-
                         Date::make(__('moonshine::ui.resource.created_at'), 'created_at')
                             ->format("d.m.Y")
                             ->default(now()->toDateTimeString()),
                     ])->icon('user-circle'),
-
                     Tab::make(__('moonshine::ui.resource.password'), [
                         Collapse::make(__('moonshine::ui.resource.change_password'), [
                             Password::make(__('moonshine::ui.resource.password'), 'password')
                                 ->customAttributes(['autocomplete' => 'new-password'])
                                 ->eye(),
-
                             PasswordRepeat::make(__('moonshine::ui.resource.repeat_password'), 'password_repeat')
                                 ->customAttributes(['autocomplete' => 'confirm-password'])
                                 ->eye(),
@@ -141,19 +129,16 @@ class MoonShineUserResource extends ModelResource
         ];
     }
 
-    /**
-     * @return array{name: array|string, moonshine_user_role_id: array|string, email: array|string, password: array|string}
-     */
     protected function rules($item): array
     {
         return [
-            'name' => 'required',
+            'name' => ['required', 'string', 'max:255', 'min:3'],
             'moonshine_user_role_id' => 'required',
-            'email' => [
-                'sometimes',
-                'bail',
+            'username' => [
                 'required',
-                'email',
+                'string',
+                'max:255',
+                'min:3',
                 Rule::unique('moonshine_users')->ignoreModel($item),
             ],
             'password' => $item->exists
@@ -179,8 +164,10 @@ class MoonShineUserResource extends ModelResource
                 formatted: static fn (MoonshineUserRole $model) => $model->name,
                 resource: MoonShineUserRoleResource::class,
             )->valuesQuery(static fn (Builder $q) => $q->select(['id', 'name'])),
-
-            Email::make('E-mail', 'email'),
+            Select::make('User Name', 'name')->options([
+                'Admin' => 'Admin',
+                'Teacher' => 'Teacher',
+            ]),
         ];
     }
 }

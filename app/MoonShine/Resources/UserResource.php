@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
-use App\Models\AddStudentOrTeacher;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
-
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\ID;
@@ -17,12 +14,12 @@ use MoonShine\UI\Fields\PasswordRepeat;
 use MoonShine\UI\Fields\Phone;
 use MoonShine\UI\Fields\Select;
 use MoonShine\UI\Fields\Text;
-
 /**
- * @extends ModelResource<AddStudentOrTeacher>
+ * @extends ModelResource<User>
  */
 class UserResource extends ModelResource
 {
+
     protected string $model = User::class;
 
     protected string $title = 'Add Users Register';
@@ -38,11 +35,10 @@ class UserResource extends ModelResource
             Text::make('Last Name')->nullable(),
             Phone::make('Student Phone Number'),
             Select::make('Role')->options([
-                'Teacher'=>'Teacher',
-                'Student'=>'Student',
-                'Admin'=>'Admin',
-                'SMM'=>'SMM',
-            ])->nullable(),
+                'Admin'=>'admin',
+                'Teacher'=>'teacher',
+                'Student'=>'student',
+            ])->default('Student'),
             Select::make('Status')->sortable()
             ->options([
                 'Active'=>'Active',
@@ -66,11 +62,10 @@ class UserResource extends ModelResource
                 Text::make('Last Name')->nullable(),
                 Phone::make('Student Phone Number'),
                 Select::make('Role')->options([
-                    'Teacher'=>'Teacher',
-                    'Student'=>'Student',
-                    'Admin'=>'Admin',
-                    'SMM'=>'SMM',
-                ])->nullable(),
+                    'Admin'=>'admin',
+                    'Teacher'=>'teacher',
+                    'Student'=>'student',
+                ])->default('Student'),
                 Select::make('Status')->sortable()
                 ->options([
                     'Active'=>'Active',
@@ -96,11 +91,10 @@ class UserResource extends ModelResource
             Text::make('Last Name')->nullable(),
             Phone::make('Student Phone Number'),
             Select::make('Role')->options([
-                'Teacher'=>'Teacher',
-                'Student'=>'Student',
-                'Admin'=>'Admin',
-                'SMM'=>'SMM',
-            ])->nullable(),
+                'Admin'=>'admin',
+                'Teacher'=>'teacher',
+                'Student'=>'student',
+            ])->default('Student'),
             Select::make('Status')->sortable()
             ->options([
                 'Active'=>'Active',
@@ -114,7 +108,7 @@ class UserResource extends ModelResource
     }
 
     /**
-     * @param AddStudentOrTeacher $item
+     * @param User $item
      *
      * @return array<string, string[]|string>
      * @see https://laravel.com/docs/validation#available-validation-rules
