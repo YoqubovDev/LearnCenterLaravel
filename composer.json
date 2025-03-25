@@ -10,6 +10,7 @@
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "moonshine/moonshine": "^3.7",
+        "moonshine/permissions": "^2.0",
         "moonshine/tinymce": "^1.0",
         "nesbot/carbon": "^3.8",
         "spatie/laravel-permission": "^6.16",
